@@ -78,7 +78,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if h.Auth != nil {
 		got = h.Auth(r)
 	}
-	if want&got == 0 {
+	if want&got != want {
 		http.Error(w, "Permission denied.", http.StatusForbidden)
 		return
 	}
